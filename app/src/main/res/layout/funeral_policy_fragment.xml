@@ -1,0 +1,57 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="25dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.example.kubaduservices1.GradientTextView
+            android:id="@+id/textViewFuneralPolicy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Request for Funeral Policies"
+            android:textColor="#004AAD"
+            android:textSize="24sp" />
+
+        <Spinner
+            android:id="@+id/policyTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/textViewFuneralPolicy"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/montserrat"
+            android:textColor="#7A7A7A"
+            android:textColorHint="#7A7A7A" />
+
+        <TextView
+            android:id="@+id/policyDetailsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/policyTypeSpinner"
+            android:layout_marginTop="16dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#7A7A7A"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/applyPolicyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/policyDetailsTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/button_gradient"
+            android:fontFamily="@font/montserrat"
+            app:backgroundTint="@null"
+            android:text="Add Policy"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+

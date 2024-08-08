@@ -1,0 +1,27 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <string name="app_name">Kubadu Services</string>
+    <string name="open_navigation_drawer" />
+    <string name="close_navigation_drawer" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array android:color="#7a7a7a" name="loan_details">
+
+        <item>Please select a loan type to view details.</item>
+        <item>Amount: R5000\nInterest Rate: 5%</item>
+        <item>Amount: R20000\nInterest Rate: 7%</item>
+        <item>Amount: R100000\nInterest Rate: 4%</item>
+    </string-array>
+    <string-array name="policy_types">
+        <item>Basic Funeral Policy</item>
+        <item>Premium Funeral Policy</item>
+    </string-array>
+    <string-array name="funeral_policy_details_basic">
+        <item>Coverage: R5000</item>
+        <item>Premium: R50/month</item>
+    </string-array>
+
+    <string-array name="funeral_policy_details_premium">
+        <item>Coverage: R10000</item>
+        <item>Premium: R90/month</item>
+    </string-array>
+</resources>
