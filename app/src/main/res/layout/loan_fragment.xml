@@ -16,41 +16,42 @@
         android:fontFamily="@font/montserrat_bold"
         android:textSize="24sp" />
 
-    <Spinner
-        android:id="@+id/loanTypeSpinner"
+    <EditText
+        android:id="@+id/loanAmountEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/loanFormTitleTextView"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/montserrat"
         android:background="@drawable/edit_text_background"
+        android:fontFamily="@font/montserrat"
+        android:hint="Enter loan amount"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
         android:textColor="#7A7A7A" />
 
     <TextView
-        android:id="@+id/loanDetailsTextView"
+        android:id="@+id/interestRateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loanTypeSpinner"
+        android:layout_below="@id/loanAmountEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Please select a loan type to view details."
+        android:layout_marginTop="16dp"
+        android:text="Interest Rate: 30%"
         android:textColor="#7A7A7A"
+        android:fontFamily="@font/montserrat"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/applyLoanButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loanDetailsTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="180dp"
         android:background="@drawable/button_gradient"
         android:backgroundTint="@null"
         android:fontFamily="@font/montserrat"
-        android:text="Add Loan"
+        android:text="Apply"
         android:textColor="@color/white"
         app:backgroundTint="@null" />
 
