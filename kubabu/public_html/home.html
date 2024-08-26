@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="module">
+      
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubadu Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic CSS reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+		
+
+        header {
+            background: linear-gradient(180deg, #000000, #00BF63);
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #00C04B 3px solid;
+        }
+
+        header h1 {
+            float: left;
+            font-size: 28px;
+        }
+
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        header a {
+            color: #fff;
+			font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            font-size: 13px; /* Relative font size */
+            margin: 0 20px; /* Adjusted margin */
+        }
+		header a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff; /* Line color */
+    transition: width 0.4s ease;
+}
+
+
+header a:hover::before {
+    width: 100%; /* Line expands to full width on hover */
+}
+
+        header ul {
+            list-style: none;
+        }
+
+        header li {
+            display: inline-block;
+            position: relative;
+        }
+
+        header li:hover .dropdown {
+            display: block;
+        }
+
+        header .dropdown {
+            display: none;
+            position: absolute;
+            background: #004AAD;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        header .dropdown a {
+            color: #fff;
+            padding: 10px 20px;
+            display: block;
+            text-align: left;
+        }
+
+        header .dropdown a:hover {
+            background: #00BF63;
+        }
+
+        main {
+            padding: 20px 0;
+        }
+
+        main h2 {
+            margin-bottom: 20px;
+            background: linear-gradient(60deg, #004AAD, #00BF63);
+            background-size: 21% 21%;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        main p {
+            margin-bottom: 20px;
+        }
+
+        section {
+            padding: 20px 0;
+            border-bottom: #77d667 1px solid;
+        }
+
+        #home {
+            background: url('images/landingimage.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            min-height: 400px;
+        }
+
+        #home .overlay {
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+			opacity: 0; /* Start with hidden overlay */
+    transition: opacity 0.3s ease-in-out; /* Fade transition */
+        }
+#home .overlay.show {
+    opacity: 1; /* Show overlay */
+}
+        #home .welcome-text {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #home .slider {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        #home .slider-text {
+            display: none;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+			transition: opacity 0.5s ease-in-out; /* Fade transition */
+        }
+
+        #home .slider-text.active {
+            display: block;
+			 opacity: 1;
+        }
+
+        #home .slider .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #home .slider .arrow.left {
+            left: -50px;
+        }
+
+        #home .slider .arrow.right {
+            right: -50px;
+        }
+
+        #home .cta-button {
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        #services .service {
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: #77d667;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-link img {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+.service-link {
+    color: #77d667;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative; /* Required for the pseudo-element positioning */
+    padding: 5px 0; /* Adjust padding to create space for the line */
+    transition: color 0.4s ease;
+}
+
+.service-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00C04B; /* Line color */
+    transition: width 0.4s ease;
+}
+
+.service-link:hover {
+    color: #004AAD;
+}
+
+.service-link:hover::before {
+    width: 100%; /* Line expands to full width on hover */
+}
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #f1f1f1;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            display: none;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        form label {
+            margin-bottom: 5px;
+        }
+
+        form input,
+        form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        form button {
+            background: #77d667;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            border-top: #77d667 3px solid;
+        }
+
+        @media (max-width: 768px) {
+            header h1,
+            header nav {
+                float: none;
+                text-align: center;
+            }
+
+            header nav ul {
+                padding: 0;
+            }
+
+            header nav ul li {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            #home .slider .arrow.left {
+                left: 10px;
+            }
+
+            #home .slider .arrow.right {
+                right: 10px;
+            }
+        }
+
+        /* Pop-up form styling */
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 10px;
+        }
+
+        .popup-form h3 {
+            margin-bottom: 10px;
+            color: #004AAD;
+        }
+
+        .popup-form .close-button {
+            background: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 50%;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .notification {
+            margin-top: 10px;
+            font-size: 1em;
+            color: red;
+        }
+
+        .document-chooser {
+            margin-bottom: 20px;
+        }
+	
+		button {
+    position: relative; /* Required for the pseudo-element positioning */
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    background-color: #00C04B;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px; /* Optional: for rounded corners */
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Start from the middle */
+    width: 0;
+    height: 2px;
+    background-color: #fff; /* Line color */
+    transition: width 0.4s ease, left 0.4s ease; /* Animate width and position */
+}
+
+button:hover {
+    background-color: #fff;
+    color: #00C04B;
+}
+
+button:hover::before {
+    width: 100%; /* Expand line to full width */
+    left: 0; /* Move line to start from the left */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Kubadu Services</h1>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Make a Request</a></li>
+                    <li><a href="requestHistory.html">View Requests</a></li>
+						<li><a href="Loans.html">View Loans</a></li>
+					<li><a href="Policies.html">View Policies</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="Register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="home">
+            <div class="overlay">
+                <h2 class="welcome-text">Welcome to Kubadu Services</h2>
+                <div class="slider">
+                    <!--<button class="arrow left" onclick="prevSlide()">&#10094;</button>--!>
+                    <div class="slider-text active">Your trusted partner for loans, funeral policies, and claims.</div>
+                    <div class="slider-text">We provide flexible loan options to meet your financial needs.</div>
+                    <div class="slider-text">Our comprehensive funeral policies ensure peace of mind.</div>
+                   <!-- <button class="arrow right" onclick="nextSlide()">&#10095;</button>--!>
+                </div>
+                <button class="cta-button" onclick="location.href='#services'">Learn More</button>
+            </div>
+        </section>
+        <section id="about">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>Kubadu Financial Services is dedicated to providing financial solutions tailored to meet your needs. Our mission is to offer reliable financial assistance and services to individuals and businesses.</p>
+            </div>
+        </section>
+        <section id="services">
+            <div class="container">
+                <h2>Make a Request</h2>
+                <div class="service">
+                    <h3>Loans</h3>
+                    <p>Flexible loan options to meet your financial needs.</p>
+                    <a href="javascript:void(0);" class="service-link" onclick="openForm('loan')"><img src="icons/loan.png" alt="Loan Icon">Apply for a loan</a>
+                </div>
+                <div class="service">
+                    <h3>Funeral Policies</h3>
+                    <p>Comprehensive funeral policies to ensure peace of mind.</p>
+                    <a href="javascript:void(0);" id="open-policy-popup" class="service-link" onclick="openForm('funeral')"><img src="icons/policy.png" alt="Funeral Policy Icon"/>Request for funeral Policies</a>
+                </div>
+             
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for more information or assistance.</p>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+  <div class="chat-container" id="chat-container">
+        <div class="chat-message">Welcome to our website! How can we assist you?</div>
+    </div>
+
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kubadu Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Pop-up Form -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+
+    <!-- Loan Form -->
+    <div class="popup-form" id="loan-form">
+        <button class="close-button" onclick="closeForm('loan')">X</button>
+        <h3>Apply for a Loan</h3>
+        <form id="loanform">
+        <label for="loan-type">Loan Type:</label>
+        <select id="loan-type" name="loan-type">
+            <option value="personalLoan">Personal Loan</option>
+            <option value="businessLoan">Business Loan</option>
+            <option value="homeLoan">Home Loan</option>
+        </select><br><br>
+        <div id="loan-details">
+            <p>Please select a loan type to view details.</p>
+        </div>
+        <button type="submit">Add Loan</button>
+    </form>
+        <div id="loan-notification" class="notification"></div>
+    </div>
+
+    <!-- Funeral Policy Form -->
+    <div class="popup-form" id="funeral-form">
+        <button class="close-button" onclick="closeForm('funeral')">X</button>
+        <h3>Request for Funeral Policies</h3>
+        <form id="funeralForm">
+             <label for="policy-type">Select Policy Plan:</label>
+            <select id="policy-type" name="policy-type">
+                <option value="basic">Basic Funeral Policy</option>
+                <option value="premium">Premium Funeral Policy</option>
+            </select><br><br>
+            <div id="policy-details">
+                <!-- Policy details will be displayed dynamically here -->
+            </div>
+            <button type="submit">Add Policy</button> 
+        </form>
+        <div id="funeral-policy-notification" class="notification"></div>
+    </div>
+<script>
+function showOverlay() {
+    const overlay = document.querySelector('#home .overlay');
+    overlay.classList.add('show'); // Add class to show overlay
+}
+
+// Show overlay automatically after 1 second
+setTimeout(showOverlay, 1000); // Show overlay after 1 second</script>
+	<script type="module">
+	
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAauhTRKCxnwpXvfdvRMXfU1K9oFvYgRRE",
+        authDomain: "login-b62bd.firebaseapp.com",
+        projectId: "login-b62bd",
+        storageBucket: "login-b62bd.appspot.com",
+        messagingSenderId: "861930818449",
+        appId: "1:861930818449:web:1c5f962893ca85ecf5a830",
+        measurementId: "G-KHJSX85R56"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Get DOM elements
+    const loanForm = document.getElementById('loanform');
+    const policyForm = document.getElementById('funeralForm');
+    const policyPopup = document.getElementById('funeral-form');
+    const policyTypeSelect = document.getElementById('policy-type');
+    const loanTypeSelect = document.getElementById('loan-type');
+    const policyDetailsDiv = document.getElementById('policy-details');
+    const loanDetailsDiv = document.getElementById('loan-details');
+    const notificationDiv = document.getElementById('funeral-policy-notification');
+    
+    // Loan details
+    const loanDetails = {
+        personalLoan: {
+            Amount: 'R5000',
+            InterestRate: '30%'
+        },
+      
+    };
+
+    // Policy details
+    const policyDetails = {
+        basic: {
+            coverage: 'R5000',
+            premium: 'R50/month'
+        },
+        premium: {
+            coverage: 'R10000',
+            premium: 'R100/month'
+        }
+    };
+
+    // Handle loan type change
+    if (loanTypeSelect) {
+        loanTypeSelect.addEventListener('change', function() {
+            const selectedLoanType = loanTypeSelect.value;
+            const loanDetails1 = loanDetails[selectedLoanType];
+            if (loanDetails1) {
+                loanDetailsDiv.innerHTML = `
+                    <p><strong>Amount:</strong> ${loanDetails1.Amount}</p>
+                    <p><strong>Interest Rate:</strong> ${loanDetails1.InterestRate}</p>
+                `;
+            } else {
+                loanDetailsDiv.innerHTML = '<p>Please select a valid loan type.</p>';
+            }
+        });
+    }
+
+    // Handle policy type change
+    if (policyTypeSelect) {
+	console.log("policy type is selected");
+        policyTypeSelect.addEventListener('change', function() {
+            const selectedPolicyType = policyTypeSelect.value.trim().toLowerCase();
+			console.log(selectedPolicyType)
+            const details = policyDetails[selectedPolicyType];
+			console.log(details)
+            if (details) {
+			console.log(details);
+                policyDetailsDiv.innerHTML = `
+                    <p><strong>Coverage Amount:</strong> ${details.coverage}</p>
+                    <p><strong>Premium:</strong> ${details.premium}</p>
+                `;
+            } else {
+                policyDetailsDiv.innerHTML = '<p>Please select a valid policy type.</p>';
+            }
+        });
+    }
+
+    // Handle policy form submission
+    if (policyForm) {
+        policyForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(policyForm);
+            const policyType = formData.get('policy-type');
+
+            if (!policyType) {
+                notificationDiv.textContent = 'Please select a policy type.';
+                notificationDiv.style.display = 'block';
+                return;
+            }
+
+            const selectedPolicy = policyDetails[policyType];
+            if (!selectedPolicy) {
+                notificationDiv.textContent = 'Invalid policy type selected.';
+                notificationDiv.style.display = 'block';
+                return;
+            }
+
+            const policyData = {
+			userEmail: 'kp@gmail.com',
+                type: policyType,
+                coverage: selectedPolicy.coverage,
+                premium: selectedPolicy.premium,
+                requestType: 'funeral policy',
+                timestamp: new Date(),
+				status: 'pending'
+            };
+
+            alert(`Policy Data: ${JSON.stringify(policyData)}`);
+            console.log('Policy request data:', policyData);
+
+            try {
+                await addDoc(collection(db, 'Requests'), policyData);
+                console.log('Policy request submitted successfully:', policyData);
+                policyForm.reset();
+                policyPopup.style.display = 'none';
+            } catch (error) {
+                notificationDiv.textContent = `Error submitting policy request: ${error.message}`;
+                notificationDiv.style.display = 'block';
+                console.error('Error submitting policy request:', error);
+            }
+        });
+    } else {
+        console.log("policy form not found");
+    }
+
+    // Handle loan form submission
+    if (loanForm) {
+	console.log("Loan form exist")
+        loanForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(loanForm);
+            const loanType = formData.get('loan-type');
+
+            // Handle loan submission logic here
+			if(!loanType){
+			console.log("loan type does not exist")
+			  notificationDiv.textContent = 'Please select a policy type.';
+                notificationDiv.style.display = 'block';
+                return;
+			}
+			
+			const selectedLoan = loanDetails[loanType];
+			if(selectedLoan){
+			 const loanData = {
+			 userEmail: 'kp@gmail.com',
+                type: loanType,
+               amount: selectedLoan.Amount,
+                interestRate: selectedLoan.InterestRate,
+                requestType: 'Loan',
+                timestamp: new Date(),
+				status: 'pending'
+            };
+			   alert(`Policy Data: ${JSON.stringify(loanData)}`);
+            console.log('Policy request data:', loanData);
+			
+			if(loanData){
+			console.log("Loan data exist")
+            try {
+			
+                await addDoc(collection(db, 'Requests'), loanData);
+                notificationDiv.textContent = 'Loan request submitted successfully.';
+                notificationDiv.style.display = 'block';
+                console.log('Loan request submitted successfully:', loanData);
+                policyForm.reset();
+                policyPopup.style.display = 'none';
+            }catch (error) {
+                notificationDiv.textContent = `Error submitting loan request: ${error.message}`;
+                notificationDiv.style.display = 'block';
+                console.error('Error submitting loan request:', error);
+            }
+			}else{
+			console.log("Loan data does not exist")
+			}
+			}
+        });
+    }else{
+	console.log("loan form does not exist")
+	}
+
+    // Slider functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slider-text");
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active");
+            if (i === index) {
+                slide.classList.add("active");
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Auto change slides every 3 seconds
+    setInterval(nextSlide, 2000);
+</script>
+
+	
+	  <script>
+       
+     
+	 const openPolicyPopupButton = document.getElementById('open-policy-popup');
+	 
+		 function openForm(type) {
+            document.getElementById('popup-overlay').style.display = 'block';
+            document.getElementById(type + '-form').style.display = 'block';
+        }
+   function closeForm(type) {
+            document.getElementById('popup-overlay').style.display = 'none';
+            document.getElementById(type + '-form').style.display = 'none';
+        }
+
+            openPolicyPopupButton.addEventListener('click', () => openForm('funeral'));
+		
+            // Object to store policy details
+         
+           
+        
+    </script>
+
+</body>
+</html>
