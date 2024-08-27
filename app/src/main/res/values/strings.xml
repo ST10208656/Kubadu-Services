@@ -4,13 +4,11 @@
     <string name="close_navigation_drawer" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array android:color="#7a7a7a" name="loan_details">
 
-        <item>Please select a loan type to view details.</item>
-        <item>Amount: R5000\nInterest Rate: 5%</item>
-        <item>Amount: R20000\nInterest Rate: 7%</item>
-        <item>Amount: R100000\nInterest Rate: 4%</item>
-    </string-array>
+    <!-- A simple string to inform users of the fixed interest rate -->
+    <string name="loan_interest_rate_info">Interest Rate: 30% for all loan amounts</string>
+
+
     <string-array name="policy_types">
         <item>Basic Funeral Policy</item>
         <item>Premium Funeral Policy</item>
@@ -22,6 +20,6 @@
 
     <string-array name="funeral_policy_details_premium">
         <item>Coverage: R10000</item>
-        <item>Premium: R90/month</item>
+        <item>Premium: R100/month</item>
     </string-array>
 </resources>

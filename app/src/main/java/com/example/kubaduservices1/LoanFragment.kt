@@ -62,6 +62,7 @@ class LoanFragment : Fragment() {
 
         val loanRequest = hashMapOf(
             "amount" to amount,
+            "requestType" to "personalLoan",
             "interestRate" to "30%",
             "status" to "Pending"
         )
